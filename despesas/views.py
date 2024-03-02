@@ -7,11 +7,11 @@ from .serializers import *
 class CategoriasViewSet(viewsets.ModelViewSet):
     queryset = Categorias.objects.all()
     serializer_class = CategoriaSerializers
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
 class DespesasViewSet(viewsets.ModelViewSet):
     queryset = Despesas.objects.all()
     serializer_class = DespesaSerializers
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
 

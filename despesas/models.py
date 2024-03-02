@@ -7,7 +7,7 @@ class Categorias(models.Model):
         return self.nome
     
 class Despesas(models.Model):
-    categorias = models.ForeignKey(Categorias, on_delete=models.CASCADE, blank=True)
+    categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE, blank=True, null=True)
     valor = models.DecimalField(max_digits=10, decimal_places=2)
     data = models.DateField()
 

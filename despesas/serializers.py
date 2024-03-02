@@ -8,8 +8,14 @@ class CategoriaSerializers(serializers.ModelSerializer):
 
 class DespesaSerializers(serializers.ModelSerializer):
 
-    categorias = serializers.ReadOnlyField(source="categorias.nome")
+    categoria = serializers.PrimaryKeyRelatedField(queryset=Categorias.objects.all())
 
     class Meta:
         model = Despesas
-        fields = ('id', 'categorias', 'valor', 'data')
+        fields = ('id', 'categoria', 'valor', 'data')
+
+    # Representar nome da categoria na API
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['categoria'] = instance.categoria.nome
+        return representation
