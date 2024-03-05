@@ -2,6 +2,7 @@ from django.db import models
 
 class Categorias(models.Model):
     nome = models.CharField("Nome da categoria", max_length=100)
+    imagem = models.ImageField(upload_to='images')
 
     def __str__(self) -> str:
         return self.nome
@@ -12,4 +13,4 @@ class Despesas(models.Model):
     data = models.DateField()
 
     def __str__(self) -> str:
-        return f"{self.categorias} - {self.valor} - {self.data}"
+        return f"{self.categoria} - {self.valor} - {self.data}"
