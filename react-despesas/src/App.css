@@ -24,6 +24,11 @@ h3 {
     border: 1px solid rgba(255, 255, 255, 0.37);
 }
 
+.Nova-Despesa:hover {
+    transform: translate(0, -3px);
+    transition: 0.5ms;
+}
+
 /* Cards */
 .Cards-Container {
     margin: 0 auto;
@@ -46,6 +51,11 @@ h3 {
     color: white;
 }
 
+.Card-Despesa:hover {
+    transform: translate(0, -3px);
+    transition: 0.5ms;
+}
+
 .Card-Despesa .Card-Image {
     width: 64px;
     height: 64px;
@@ -55,11 +65,9 @@ h3 {
 }
 
 .Card-Price {
-    color: rgb(170, 11, 11);
+    color: #1e2025;
     font-weight: bold;
-}
-
-.Cards-Options {
+    font-size: 1.2em;
 }
 
 .Cards-Option {

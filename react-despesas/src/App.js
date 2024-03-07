@@ -56,12 +56,14 @@ function App() {
                         <p className="Card-Price">R$-{despesas.valor}</p>
                         <p className="Card-Date">{despesas.data}</p>
                         <div className="Cards-Options">
-                            <img
-                                src="./edit.png"
-                                alt="ícone de edição"
-                                className="Cards-Option"
-                                title="Editar"
-                            />
+                            <a href={`${despesas.id}/editar/`}>
+                                <img
+                                    src="./edit.png"
+                                    alt="ícone de edição"
+                                    className="Cards-Option"
+                                    title="Editar"
+                                />
+                            </a>
                             <img
                                 src="./delete.png"
                                 alt="ícone de deletar"

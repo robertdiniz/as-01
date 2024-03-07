@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import Criar from "./Criar";
+import Editar from "./Editar";
 import reportWebVitals from "./reportWebVitals";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
     {
         path: "/criar",
         element: <Criar />,
+    },
+    {
+        path: ":id/editar",
+        element: <Editar />,
     },
 ]);
 
