@@ -11,6 +11,7 @@ function Editar() {
     const [valor, setValor] = useState([]);
     const [categoria, setCategoria] = useState([]);
     const [categorias, setCategorias] = useState([]);
+
     // GET - Despesa
     useEffect(() => {
         fetch(`http://localhost:8000/despesas/${id}/`, {
@@ -67,14 +68,11 @@ function Editar() {
             })
             .then((data) => {
                 console.log("Dados atualizados com sucesso:", data);
-                // Lógica adicional após a atualização bem-sucedida
             })
             .catch((error) => {
                 console.error("Erro:", error);
-                // Lógica de tratamento de erros
             });
 
-        console.log(despesa);
     };
 
     return (
