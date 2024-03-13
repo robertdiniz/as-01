@@ -19,7 +19,6 @@ function App() {
             .then((resp) => resp.json())
             .then((data) => {
                 setDespesas(data);
-                console.log(data);
             })
             .catch((err) => console.log(err));
     }, []);
@@ -36,7 +35,7 @@ function App() {
             <h1>Registro de Despesas</h1>
 
             <div>
-                <a href={`/criar`} className="Nova-Despesa">
+                <a href="/criar" className="Nova-Despesa">
                     CRIAR NOVA DESPESA
                 </a>
             </div>

@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import { useState, useEffect, setState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, redirect } from "react-router-dom";
 
 function Editar() {
     const { id } = useParams();
@@ -23,7 +23,9 @@ function Editar() {
             .then((resp) => resp.json())
             .then((data) => {
                 setDespesa(data);
-                console.log(data);
+                setValor(data.valor);
+                setData(data.data);
+                setCategoria(data.categoria);
             })
             .catch((err) => console.log(err));
     }, []);
@@ -54,7 +56,7 @@ function Editar() {
         };
 
         fetch(`http://localhost:8000/despesas/${id}/`, {
-            method: "PATCH",
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -62,22 +64,27 @@ function Editar() {
         })
             .then((response) => {
                 if (!response.ok) {
-                    throw new Error("Erro ao enviar PATCH");
+                    throw new Error("Erro ao enviar PUT");
                 }
                 return response.json();
-            })
-            .then((data) => {
-                console.log("Dados atualizados com sucesso:", data);
             })
             .catch((error) => {
                 console.error("Erro:", error);
             });
+    };
 
+    const handleChange = (event) => {
+        setValor(event.target.value);
     };
 
     return (
         <div className="App">
             <h1>Editando Despesa</h1>
+            <div>
+                <a href="/" className="Nova-Despesa">
+                    Home
+                </a>
+            </div>
             <div className="Add-Despesas">
                 {despesa && (
                     <form onSubmit={handleSubmit} className="Form-Despesas">
@@ -91,10 +98,7 @@ function Editar() {
                             style={{ margin: "0 auto" }}
                         />
                         <label>Categoria:</label>
-                        <select
-                            onChange={(e) => setCategoria(e.target.value)}
-                            onClick={(e) => console.log(e.target.value)}
-                        >
+                        <select onChange={(e) => setCategoria(e.target.value)}>
                             <option value="">Selecionar uma categoria</option>
                             {categorias.map((cat) => (
                                 <option key={cat.id} value={cat.id}>
@@ -107,12 +111,9 @@ function Editar() {
                             type="number"
                             name="valor"
                             value={valor}
-                            onChange={(e) => {
-                                setValor(e.target.value);
-                                console.log(e.target.value);
-                            }}
+                            onChange={handleChange}
                         />
-                        <p>{valor}</p>
+
                         <label>Data:</label>
                         <input
                             type="date"

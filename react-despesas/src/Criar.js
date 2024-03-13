@@ -23,7 +23,7 @@ function Criar() {
             .then((resp) => resp.json())
             .then((data) => {
                 setCategorias(data);
-                console.log(data);
+
             })
             .catch((err) => console.log(err));
     }, []);
@@ -63,10 +63,7 @@ function Criar() {
                 <h2>Adicionando Despesas!</h2>
                 <form onSubmit={handleSubmit} className="Form-Despesas">
                     <label>Categoria:</label>
-                    <select
-                        onChange={(e) => setCategoria(e.target.value)}
-                        onClick={(e) => console.log(e.target.value)}
-                    >
+                    <select onChange={(e) => setCategoria(e.target.value)}>
                         <option value="">Selecione uma categoria</option>
                         {categorias.map((cat) => (
                             <option key={cat.id} value={cat.id}>
@@ -88,7 +85,11 @@ function Criar() {
                         value={data}
                         onChange={(e) => setData(e.target.value)}
                     />
-                    <input type="submit" value="Criar" className="BTN-Despesa"/>
+                    <input
+                        type="submit"
+                        value="Criar"
+                        className="BTN-Despesa"
+                    />
                 </form>
             </div>
         </div>
