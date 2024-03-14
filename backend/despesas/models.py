@@ -2,7 +2,7 @@ from django.db import models
 
 class Categorias(models.Model):
     nome = models.CharField("Nome da categoria", max_length=100)
-    imagem = models.ImageField(upload_to='images')
+    imagem = models.ImageField(upload_to='images', blank=True, null=True)
 
     def __str__(self) -> str:
         return self.nome
