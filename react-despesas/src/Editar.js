@@ -62,12 +62,8 @@ function Editar() {
             },
             body: JSON.stringify(despesa),
         })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Erro ao enviar PUT");
-                }
-                return response.json();
-            })
+            .then((response) => {response.json()}
+            )
             .catch((error) => {
                 console.error("Erro:", error);
             });
